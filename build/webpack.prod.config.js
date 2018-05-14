@@ -18,9 +18,8 @@ fs.open('./build/env.js', 'w', function(err, fd) {
 
 module.exports = merge(webpackBaseConfig, {
     output: {
-        publicPath: 'https://iview.github.io/iview-admin/dist/',  // 修改 https://iv...admin 这部分为你的服务器域名 
-        filename: '[name].[hash].js',
-        chunkFilename: '[name].[hash].chunk.js'
+        publicPath: '/sg/dist/',  // 修改 https://iv...admin 这部分为你的服务器域名 
+        filename: '[name].js'
     },
     plugins: [
         new cleanWebpackPlugin(['dist/*'], {
@@ -30,12 +29,12 @@ module.exports = merge(webpackBaseConfig, {
             filename: '[name].[hash].css',
             allChunks: true
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            // name: 'vendors',
-            // filename: 'vendors.[hash].js'
-            name: ['vender-exten', 'vender-base'],
-            minChunks: Infinity
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     // name: 'vendors',
+        //     // filename: 'vendors.[hash].js'
+        //     name: ['vender-exten', 'vender-base'],
+        //     minChunks: Infinity
+        // }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'

@@ -14,13 +14,19 @@ util.title = function (title) {
 const ajaxUrl = env === 'development'
     ? 'http://127.0.0.1:8888'
     : env === 'production'
-        ? 'https://www.url.com'
-        : 'https://debug.url.com';
+        ? 'https://serge.jianjian.work'
+        : 'https://t-serge.jianjian.work';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
     timeout: 30000
 });
+
+util.get = function (apiUrl) {
+    axios.get(apiUrl).then(res => {
+        return res.data;
+    });
+};
 
 util.inOf = function (arr, targetArr) {
     let res = true;
